@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+service TestService {
+  rpc VoidCall (Void) returns (Void);
+  rpc LongCall (LongValue) returns (LongValue);
+  rpc LongArrayCall (LongArray) returns (LongValue);
+  rpc StringCall (StringValue) returns (StringValue);
+  rpc ComplexCall (ComplexValue) returns (ComplexValue);
+}
+
+message Void {}
+
+message LongValue {
+  int64 value = 1;
+}
+
+message LongArray {
+  repeated int64 values = 1;
+}
+
+message StringValue {
+  string value = 1;
+}
+
+message ComplexValue {
+  int64 id = 1;
+  string name = 2;
+}
