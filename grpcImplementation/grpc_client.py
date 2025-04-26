@@ -33,12 +33,14 @@ def run():
         response = stub.LongArrayCall(grpc_test_pb2.LongArray(values=signed_long_array))
         print("Response value received (should be 80000000000000000028): ", response.value)
 
-        print("\nMaking StringCalls for size of string in range 2^0 to 2^11...")
+        print("\nMaking StringCall for size of string in range 2^0 to 2^11...")
         sizes = [2 ** i for i in range(0, 11)]  # [1, 2, 4, ..., 1024]
         for size in sizes:
             test_string = generate_string(size)
             response = stub.StringCall(grpc_test_pb2.StringValue(value=test_string))
             print("StringCall response (should be string of length {}): ".format(size), response.value)
+
+        print("\nMaking ComplexCall...")
 
 if __name__ == "__main__":
     logging.basicConfig()
