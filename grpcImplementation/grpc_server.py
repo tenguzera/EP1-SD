@@ -15,12 +15,12 @@ class TestServiceServicer(grpc_test_pb2_grpc.TestServiceServicer):
         return grpc_test_pb2.LongValue(value=request.value+1)
 
     def LongArrayCall(self, request, context):
-        # Receives a array of longs (int64) and returns ...
-        return grpc_test_pb2.LongArrayValue(request.values)
+        # Receives a array of longs (int64) and returns the sum of all elements in the array
+        return grpc_test_pb2.LongValue(value=sum(request.values))
 
     def StringCall(self, request, context):
         # Receives a string from the client, transforms it to lower case and returns the new string
-        return grpc_test_pb2.StringValue(value=request.value)
+        return grpc_test_pb2.StringValue(value=request.value.lower())
 
     def ComplexCall(self, request, context):
         # Receives a complex type consisting of a id (int64) and a name (string)
