@@ -24,14 +24,14 @@ class TestServiceServicer(grpc_test_pb2_grpc.TestServiceServicer):
 
     def ComplexCall(self, request, context):
         # Receives a complex type consisting of a id (int64) and a name (string)
-        # Returns ...
+        # Returns without any change of the values
         return grpc_test_pb2.ComplexValue(id=request.id, name=request.name)
 
 def serve():
     port = "50051"
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     grpc_test_pb2_grpc.add_TestServiceServicer_to_server(TestServiceServicer(), server)
-    server.add_insecure_port("[::]:" + port)
+    server.add_insecure_port("[::]:" + port) # This line must be changed if you want to test with the client and server in different machines
     server.start()
     print("Server started, listening on " + port)
     server.wait_for_termination()
