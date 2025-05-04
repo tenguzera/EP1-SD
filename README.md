@@ -18,7 +18,7 @@ Este projeto compara o desempenho entre **gRPC** e **Apache Thrift** em diferent
 
 1. Clone o repositório e acesse a pasta:
 ```bash
-git clone https://github.com/tenguzera/EP1-SD/
+git clone https://github.com/tenguzera/EP1-SD.git
 cd EP1-SD
 ```
    
